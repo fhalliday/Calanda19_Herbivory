@@ -275,7 +275,7 @@ variables.fig(calanda19.com, com.her.ri2, "Site")
 
 # model variance separately among sites
 com.her.ri3 <- lme(sqrt.Herbivory.l ~ plant.richness * elevation + 
-                     FDiv.z*elevation +
+                     FDiv*elevation +
                      mpd.obs.z*elevation +
                      FDiv * elevation,
                    random = ~1|Meadow/Site/PlotID,
@@ -353,7 +353,7 @@ car::Anova(calanda19.fdivmod)
 MuMIn::r.squaredGLMM(calanda19.fdivmod)
 
 
-r.t <- ggeffects::ggpredict(calanda19.rmod2, "mean.air.t") %>% plot(rawdata = F) +
+r.t <- ggeffects::ggpredict(calanda19.rmod, "mean.air.t") %>% plot(rawdata = F) +
   geom_point(data = calanda19.com, aes(x = mean.air.t, y = plant.richness), position = position_jitter(), shape = 1)+
   theme_classic() +
   theme(axis.title = element_text(size = 11), axis.text.x = element_text(size = 11), 
